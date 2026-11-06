@@ -1,138 +1,230 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+
+type Project = {
+  title: string;
+  year: string;
+  role: string;
+  desc: string;
+  skills: string[];
+  details: string[];
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    title: "QR-Based Transport Ticketing & Fee Collection System",
+    year: "Third Year",
+    role: "Backend Developer / Database Admin",
+    desc: "A web-based academic project developed for transport terminal operations in Borongan City. The system focuses on managing driver information, QR-based identification, prepaid balances, transport transactions, payment records, vehicle information, and administrative monitoring.",
+    skills: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Supabase", "MySQL", "GitHub"],
+    details: [
+      "Backend-related functionality",
+      "Database management and storage",
+      "Driver and vehicle records management",
+      "Data validation and testing",
+      "QR-based identification and transaction records",
+    ],
+    featured: true,
+  },
+  {
+    title: "Event Planner System",
+    year: "First Year",
+    role: "Web Developer",
+    desc: "My first academic web project, learning the fundamentals of web development, interface design, and collaborative development.",
+    skills: ["HTML", "CSS", "JavaScript"],
+    details: [
+      "Built basic page layouts and interface components",
+      "Practiced responsive design fundamentals",
+      "Learned how to structure a simple web project",
+      "Collaborated with classmates during development",
+    ],
+  },
+  {
+    title: "Crochet Creation System",
+    year: "Second Year",
+    role: "System Developer",
+    desc: "A web-based system that helped me develop my understanding of system design, databases, user interfaces, and teamwork.",
+    skills: ["Web Dev", "Database", "System Design"],
+    details: [
+      "Designed system pages and user interface layouts",
+      "Worked with database-related features",
+      "Organized product and user information",
+      "Tested features and improved system flow",
+    ],
+  },
+];
 
 export default function FeaturedWork() {
-  const allProjects = [
-    { 
-      title: "QR Transport Ticketing", 
-      year: "Third Year", 
-      role: "Backend & Database Admin", 
-      img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop" 
-    },
-    { 
-      title: "Crochet Creation System", 
-      year: "Second Year", 
-      role: "System Developer", 
-      img: "https://images.unsplash.com/photo-1615715917286-3fb6bb3eb372?q=80&w=600&auto=format&fit=crop" 
-    },
-    { 
-      title: "Event Planner System", 
-      year: "First Year", 
-      role: "Web Developer", 
-      img: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop" 
-    }
-  ];
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
-    <section id="work" className="py-32 bg-[#f4f4f5] border-y border-gray-200 overflow-hidden">
-      
-      {/* =========================================
-          1. THE FEATURED PROJECT (Case Study)
-          ========================================= */}
-      <div className="max-w-6xl mx-auto px-6 mb-32">
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-          
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 bg-[#FF3366] text-white text-xs font-bold rounded-full tracking-widest uppercase shadow-md shadow-pink-500/30">Featured Project</span>
-            <span className="text-gray-500 text-sm font-bold tracking-widest uppercase">Third Year</span>
-          </div>
+    <section id="work" className="py-32 px-6 bg-[#f4f4f5] border-t border-gray-200">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 bg-[#FF3366] text-white text-xs font-black rounded-full tracking-widest uppercase mb-6 shadow-md shadow-pink-500/30"
+          >
+            My Work ✨
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black mb-6 text-black tracking-tighter"
+          >
+            Projects I’ve Built
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+            className="text-gray-500 font-medium max-w-2xl mx-auto text-lg"
+          >
+            All of my academic projects are shown below. Click any project to view the full case study and my contributions.
+          </motion.p>
+        </div>
 
-          <h2 className="text-4xl md:text-7xl font-extrabold mb-10 text-black leading-[1.1] tracking-tight">
-            QR-Based Transport Ticketing & Fee Collection System
-          </h2>
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, i) => (
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className={`bg-white rounded-3xl p-8 border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col group ${
+                project.featured ? "md:col-span-2" : ""
+              }`}
+            >
+              {/* Tags */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                {project.featured && (
+                  <span className="px-3 py-1.5 bg-[#111] text-white text-xs font-bold rounded-full tracking-widest uppercase">
+                    Featured 🌟
+                  </span>
+                )}
+                <span className="text-xs font-bold text-[#FF3366] uppercase tracking-widest">
+                  {project.year}
+                </span>
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                  {project.role}
+                </span>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Role</h4>
-              <p className="font-extrabold text-black text-xl mb-1">Backend Developer</p>
-              <p className="font-extrabold text-black text-xl">Database Administrator</p>
-            </div>
-            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm md:col-span-2">
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Technologies Used</h4>
-              <div className="flex flex-wrap gap-2">
-                {["HTML", "CSS", "JavaScript", "Tailwind CSS", "Supabase", "MySQL", "GitHub"].map(t => (
-                  <span key={t} className="px-4 py-2 bg-[#f4f4f5] border border-gray-200 rounded-lg text-sm font-bold text-black">{t}</span>
+              {/* Title */}
+              <h3 className={`font-black text-black mb-4 leading-tight tracking-tight ${project.featured ? "text-3xl md:text-5xl" : "text-2xl"}`}>
+                {project.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 font-medium leading-relaxed mb-8">
+                {project.desc}
+              </p>
+
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.skills.map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-[#f4f4f5] border border-gray-200 rounded-lg text-xs font-bold text-black group-hover:border-[#FF3366] transition-colors">
+                    {skill}
+                  </span>
                 ))}
               </div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-sm">
-              <h3 className="text-2xl font-extrabold mb-4 text-black">About the Project</h3>
-              <p className="text-gray-600 leading-relaxed font-medium text-lg">
-                A web-based academic project developed for transport terminal operations in Borongan City. The system focuses on managing driver information, QR-based identification, prepaid balances, transport transactions, payment records, vehicle information, and administrative monitoring.
+              {/* Placeholder Screenshots for Featured */}
+              {project.featured && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                  <div className="aspect-video bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold shadow-inner">🖥️ Dashboard Preview</div>
+                  <div className="aspect-video bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold shadow-inner">📱 Mobile View</div>
+                </div>
+              )}
+
+              {/* Action Button */}
+              <button
+                type="button"
+                onClick={() => setActiveProject(project)}
+                className="mt-auto w-full py-4 bg-[#f4f4f5] text-black font-extrabold rounded-xl group-hover:bg-[#FF3366] group-hover:text-white transition-all shadow-sm flex items-center justify-center gap-2"
+              >
+                View Project Details <span className="text-xl">→</span>
+              </button>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+
+      {/* PROJECT DETAILS MODAL (Pop-up) */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveProject(null)}
+            className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-md p-4 flex items-center justify-center overflow-y-auto"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-[2rem] max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 md:p-12 relative shadow-2xl"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setActiveProject(null)}
+                className="absolute top-6 right-6 h-12 w-12 rounded-full bg-gray-100 hover:bg-[#FF3366] hover:text-white transition-colors font-bold text-xl flex items-center justify-center"
+              >
+                ✕
+              </button>
+
+              <span className="text-sm font-black text-[#FF3366] uppercase tracking-widest block mb-2">
+                {activeProject.year} • {activeProject.role}
+              </span>
+              <h3 className="text-3xl md:text-5xl font-black text-black mt-2 mb-6 tracking-tight leading-tight">
+                {activeProject.title}
+              </h3>
+
+              <p className="text-gray-600 font-medium leading-relaxed mb-10 text-lg">
+                {activeProject.desc}
               </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-sm">
-              <h3 className="text-2xl font-extrabold mb-4 text-black">My Contribution</h3>
-              <ul className="text-gray-600 leading-relaxed space-y-3 font-medium text-lg">
-                <li className="flex gap-3"><span className="text-[#FF3366] font-black">✓</span> Backend-related functionality</li>
-                <li className="flex gap-3"><span className="text-[#FF3366] font-black">✓</span> Database management & storage</li>
-                <li className="flex gap-3"><span className="text-[#FF3366] font-black">✓</span> Driver/vehicle records management</li>
-                <li className="flex gap-3"><span className="text-[#FF3366] font-black">✓</span> Data validation & testing</li>
-                <li className="flex gap-3"><span className="text-[#FF3366] font-black">✓</span> Debugging and system integration</li>
-              </ul>
-            </div>
-          </div>
 
-          <div className="mb-12">
-            <h3 className="text-2xl font-extrabold mb-6 text-black">Project Screenshots</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-               <motion.div whileHover={{ scale: 1.02 }} className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold border border-gray-300">Login Screen</motion.div>
-               <motion.div whileHover={{ scale: 1.02 }} className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold border border-gray-300">Driver Dashboard</motion.div>
-               <motion.div whileHover={{ scale: 1.02 }} className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold border border-gray-300">QR Section</motion.div>
-               <motion.div whileHover={{ scale: 1.02 }} className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-bold border border-gray-300">Admin Dashboard</motion.div>
-            </div>
-          </div>
-
-          <a href="#contact" className="inline-block px-10 py-5 bg-black text-white font-extrabold text-lg rounded-full hover:scale-105 transition-transform shadow-2xl">
-            View Project Details →
-          </a>
-        </motion.div>
-      </div>
-
-      {/* =========================================
-          2. THE VERTICAL 3D CAROUSEL
-          ========================================= */}
-      <div className="max-w-6xl mx-auto px-6 border-t border-gray-300 pt-20">
-        <div className="text-center mb-16">
-          <h3 className="text-4xl md:text-6xl font-extrabold text-black mb-4 tracking-tight">Explore All My Projects</h3>
-          <p className="text-gray-500 font-medium text-lg">Hover over the wheel to pause the animation.</p>
-        </div>
-
-        <div className="carousel-container">
-          <div className="carousel-wheel">
-            {allProjects.map((project, index) => (
-              <div key={index} className="carousel-item group flex flex-col bg-white">
-                
-                {/* Image Half */}
-                <div className="relative h-[60%] overflow-hidden bg-gray-100">
-                  <img 
-                    src={project.img} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button className="px-6 py-3 bg-white text-black font-extrabold rounded-full hover:scale-105 transition-transform shadow-lg">
-                      View Project →
-                    </button>
-                  </div>
-                </div>
-
-                {/* Text Half */}
-                <div className="p-6 h-[40%] flex flex-col justify-center">
-                  <span className="text-xs font-bold text-[#FF3366] uppercase tracking-wider mb-2 block">{project.year}</span>
-                  <h3 className="text-xl font-extrabold mb-1 leading-tight text-black">{project.title}</h3>
-                  <p className="text-sm font-semibold text-gray-500">{project.role}</p>
-                </div>
-                
+              <div className="bg-[#f4f4f5] p-8 rounded-2xl mb-10 border border-gray-200">
+                <h4 className="text-xl font-black text-black mb-6 flex items-center gap-2">
+                  <span className="text-[#FF3366]">🛠️</span> My Contributions
+                </h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {activeProject.details.map((detail) => (
+                    <li key={detail} className="flex gap-3 text-gray-700 font-semibold bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                      <span className="text-[#FF3366] font-black">✓</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
+
+              <h4 className="text-lg font-black text-black mb-4">Technologies Used</h4>
+              <div className="flex flex-wrap gap-2 mb-10">
+                {activeProject.skills.map((skill) => (
+                  <span key={skill} className="px-4 py-2 bg-[#111] text-white rounded-lg text-sm font-bold shadow-md">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setActiveProject(null)}
+                className="w-full py-5 bg-[#FF3366] text-white font-black text-lg rounded-2xl hover:bg-black transition-colors shadow-xl shadow-pink-500/30"
+              >
+                Close Project Details
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
