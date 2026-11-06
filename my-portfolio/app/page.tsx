@@ -1,24 +1,30 @@
 import Hero from './sections/Hero'
-import About from './sections/About'
 import Stats from './sections/Stats'
+import About from './sections/About'
 import Services from './sections/Services'
 import Education from './sections/Education'
-import Journey from './sections/Journey'
-import Skills from './sections/Skills'
 import Achievements from './sections/Achievements'
+import Journey from './sections/Journey'
+import FeaturedWork from './sections/FeaturedWork'
+import Workflow from './sections/Workflow'
+import Skills from './sections/Skills'
+import Resume from './sections/Resume'
 import Contact from './sections/Contact'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <About />
       <Stats />
+      <About />
       <Services />
       <Education />
-      <Journey />
-      <Skills />
       <Achievements />
+      <Journey />
+      <FeaturedWork />
+      <Workflow />
+      <Skills />
+      <Resume />
       <Contact />
     </>
   )

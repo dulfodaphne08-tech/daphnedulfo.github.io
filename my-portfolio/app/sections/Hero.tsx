@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, MouseEvent } from "react";
 
 export default function Hero() {
   const [loading, setLoading] = useState(true);
-  
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -40,23 +39,23 @@ export default function Hero() {
   return (
     <section className="min-h-screen relative pt-32 pb-12 px-6 flex flex-col items-center justify-center overflow-hidden bg-[#f4f4f5]">
       
-      {/* Top Navbar Items */}
+      {/* Navbar - Pushed down and separated */}
       <div className="w-full max-w-7xl flex justify-between items-center absolute top-8 left-1/2 -translate-x-1/2 px-6 z-30">
         <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
           <span className="text-xs font-bold uppercase tracking-wider text-black">Available for OJT / Part-Time</span>
         </div>
-        <div className="hidden md:flex gap-8 text-sm font-bold text-gray-500">
+        <div className="hidden md:flex gap-8 text-sm font-bold text-gray-500 items-center">
           <a href="#journey" className="hover:text-black transition-colors">Work <sup>[3]</sup></a>
           <a href="#skills" className="hover:text-black transition-colors">Skills</a>
           <a href="#contact" className="px-6 py-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors shadow-lg">Let's Talk ↗</a>
         </div>
       </div>
 
-      {/* Giant Background Text - Fixed Box Issue */}
+      {/* Giant Background Text - Properly positioned */}
       <motion.h1 
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-        className="absolute top-[18%] left-1/2 -translate-x-1/2 text-[14vw] leading-none font-black text-outline pointer-events-none whitespace-nowrap tracking-tighter"
+        className="absolute top-[22%] left-1/2 -translate-x-1/2 text-[14vw] leading-none font-black text-outline pointer-events-none whitespace-nowrap tracking-tighter"
         style={{ fontFamily: 'Anton, sans-serif' }}
       >
         DAPHNE DULFO
@@ -74,28 +73,29 @@ export default function Hero() {
           <p className="text-gray-500 text-base mb-8 leading-relaxed max-w-sm">
             I build and explore web-based systems while continuously developing my skills in programming, databases, and modern development tools.
           </p>
-          <a href="#journey" className="w-fit px-8 py-4 bg-[#FF3366] text-white text-sm font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-xl shadow-pink-500/30">
-            View My Work →
-          </a>
+          <div className="flex gap-4">
+            <a href="#journey" className="w-fit px-8 py-4 bg-[#FF3366] text-white text-sm font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-xl shadow-pink-500/30">
+              View My Work →
+            </a>
+            <a href="#about" className="w-fit px-8 py-4 bg-white border border-gray-200 text-black text-sm font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+              About Me
+            </a>
+          </div>
         </motion.div>
 
-        {/* Center Image - High Quality Spotlight */}
+        {/* Center Image - Made larger, no box, spotlight effect */}
         <div className="md:col-span-5 flex justify-center relative z-10">
           <motion.div 
             ref={containerRef}
             onMouseMove={handleMouseMove}
             initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }}
-            // Made the image larger and removed borders
             className="w-full max-w-125 h-150 md:h-175 relative overflow-hidden cursor-none bg-transparent"
           >
-            {/* Grayscale Base */}
             <img 
               src="/picture.png" 
               alt="Daphne Dulfo" 
               className="absolute inset-0 w-full h-full object-cover object-top grayscale"
             />
-            
-            {/* Colored Mask on Hover */}
             <motion.div 
               className="absolute inset-0 w-full h-full object-cover object-top z-10 pointer-events-none"
               style={{
