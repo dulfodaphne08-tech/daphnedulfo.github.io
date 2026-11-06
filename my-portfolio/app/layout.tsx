@@ -1,26 +1,29 @@
-import type { Metadata } from 'next'
-import Cursor from './components/Cursor'
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
 import './globals.css'
+import { ReactLenis } from 'lenis/react'
+import Cursor from './components/Cursor'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import { Plus_Jakarta_Sans, Anton } from 'next/font/google'
 
-export const metadata: Metadata = {
+// Premium aesthetic font
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] })
+// Bold impact font for the giant name
+const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton' })
+
+export const metadata = {
   title: 'Daphne Dulfo | Portfolio',
-  description: 'Portfolio of Daphne Dulfo, an aspiring IT professional.',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Cursor />
+      <body className={`${jakarta.className} ${anton.variable}`}>
+        <ReactLenis root options={{ lerp: 0.05, smoothWheel: true }}>
+          <Cursor />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ReactLenis>
       </body>
     </html>
   )

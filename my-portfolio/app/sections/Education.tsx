@@ -10,27 +10,42 @@ const education = [
 
 export default function Education() {
   return (
-    <section className="py-32 px-6 bg-white border-y border-gray-200">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-black mb-20 text-center text-black tracking-tighter">My Education</h2>
+    <section className="py-32 px-6 bg-[#f4f4f5] overflow-hidden">
+      <div className="max-w-5xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-4 text-black tracking-tight">My Education</h2>
+          <p className="text-gray-500 text-lg">The academic journey that shaped my technical foundation.</p>
+        </motion.div>
         
-        <div className="relative border-l-2 border-gray-300 ml-4 md:ml-0 md:left-1/2">
+        <div className="relative">
+          {/* The vertical center line (hidden on mobile) */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gray-300 -translate-x-1/2"></div>
+          
+          {/* The vertical line for mobile */}
+          <div className="md:hidden absolute left-4 top-0 bottom-0 w-[2px] bg-gray-300"></div>
+
           {education.map((edu, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, y: 40 }} 
+              initial={{ opacity: 0, y: 50 }} 
               whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              className={`mb-12 relative pl-10 md:pl-0 ${i % 2 === 0 ? "md:pr-16 md:text-right md:-ml-[50%]" : "md:pl-16 md:ml-[50%]"}`}
+              transition={{ delay: i * 0.15, duration: 0.7 }}
+              className={`relative flex items-center justify-between w-full mb-16 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
             >
-              {/* The Dot */}
-              <div className={`absolute w-6 h-6 bg-[#FF3366] rounded-full border-4 border-white shadow-md top-2 ${i % 2 === 0 ? "left-[-13px] md:left-auto md:right-[-13px]" : "left-[-13px] md:left-[-13px]"}`}></div>
+              {/* Empty space for desktop layout */}
+              <div className="hidden md:block w-[45%]"></div>
               
-              <div className="bg-[#f4f4f5] p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FF3366] transition-all">
-                <span className="text-sm font-black text-[#FF3366] uppercase tracking-widest block mb-3">{edu.year}</span>
-                <h3 className="text-2xl font-black text-black mb-2">{edu.title}</h3>
-                <p className="text-gray-600 font-medium leading-relaxed">{edu.desc}</p>
+              {/* The dot on the timeline */}
+              <div className="absolute left-4 md:left-1/2 w-5 h-5 bg-[#FF3366] rounded-full border-4 border-[#f4f4f5] transform -translate-x-1/2 z-10 shadow-md"></div>
+              
+              {/* The card */}
+              <div className="w-full pl-12 md:pl-0 md:w-[45%]">
+                <div className={`bg-white p-8 rounded-3xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-[#FF3366] transition-all ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <span className="text-sm font-bold text-[#FF3366] uppercase tracking-widest block mb-3">{edu.year}</span>
+                  <h3 className="text-2xl font-extrabold text-black mb-2">{edu.title}</h3>
+                  <p className="text-gray-600 font-medium leading-relaxed">{edu.desc}</p>
+                </div>
               </div>
             </motion.div>
           ))}
