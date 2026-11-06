@@ -1,3 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #e5e5e5;
+  --foreground: #111111;
+  --muted: #71717a;
+  --accent: #FF3366;
+  --card: #ffffff;
+  --border: #e4e4e7;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+a, button { cursor: none; }
+
+/* Custom Cursor */
+.cursor {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+.cursor.hovered {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 51, 102, 0.2);
+  border: 1px solid var(--accent);
+}
+
+::-webkit-scrollbar { display: none; }
+
 /* Vertical Ferris Wheel Carousel */
 .carousel-container {
   perspective: 1200px;
@@ -14,7 +57,6 @@
   width: 380px;
   height: 450px;
   transform-style: preserve-3d;
-  /* RotateX makes it spin vertically */
   animation: rotateWheelVertical 20s linear infinite;
 }
 
@@ -29,12 +71,11 @@
   backface-visibility: hidden;
   border-radius: 1.5rem;
   overflow: hidden;
-  border: 1px solid #e4e4e7;
+  border: 1px solid var(--border);
   box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-  background: #fff;
+  background: var(--card);
 }
 
-/* Positioning the 3 cards in a vertical circle */
 .carousel-item:nth-child(1) { transform: rotateX(0deg) translateZ(350px); }
 .carousel-item:nth-child(2) { transform: rotateX(120deg) translateZ(350px); }
 .carousel-item:nth-child(3) { transform: rotateX(240deg) translateZ(350px); }
@@ -42,4 +83,12 @@
 @keyframes rotateWheelVertical {
   0% { transform: rotateX(0deg); }
   100% { transform: rotateX(360deg); }
+}
+
+/* Text Outline (if you need it later) */
+.text-outline {
+  color: transparent !important;
+  -webkit-text-stroke: 2px #111111;
+  background-color: transparent !important;
+  z-index: 0;
 }
