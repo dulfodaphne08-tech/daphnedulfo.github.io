@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Deploying to GitHub Pages
+
+The GitHub Actions workflow in `.github/workflows/deploy.yml` builds this app as a static site and deploys it whenever changes are pushed to `main`.
+
+In the repository settings, open **Pages** and set **Build and deployment → Source** to **GitHub Actions**. The static site is generated in `out/` by `npm run build`.
+
 ## Getting Started
 
 First, run the development server:
