@@ -11,16 +11,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "py-4 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-(--border-color)" : "py-6"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "py-4 bg-[#e5e5e5]/80 backdrop-blur-md shadow-sm" : "py-8 bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-black tracking-tighter text-white" style={{ fontFamily: 'var(--font-giant)' }}>DAPHNE.</a>
-        <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-(--text-muted)">
-          <a href="#about" className="hover:text-(--accent-pink) transition-colors">ABOUT</a>
-          <a href="#journey" className="hover:text-(--accent-pink) transition-colors">JOURNEY</a>
-          <a href="#skills" className="hover:text-(--accent-pink) transition-colors">SKILLS</a>
-          <a href="#contact" className="hover:text-(--accent-pink) transition-colors">CONTACT</a>
+        <a href="#" className="text-2xl font-black tracking-tighter text-black">DAPHNE.</a>
+        <div className="hidden md:flex gap-4 text-sm font-bold text-gray-600 bg-white/70 backdrop-blur-md px-6 py-2 rounded-full border border-gray-300 shadow-sm">
+          <a href="#about" className="hover:text-[#FF3366] transition-colors px-2">About</a>
+          <a href="#journey" className="hover:text-[#FF3366] transition-colors px-2">Journey</a>
+          <a href="#work" className="hover:text-[#FF3366] transition-colors px-2">Work</a>
+          <a href="#contact" className="hover:text-[#FF3366] transition-colors px-2">Contact</a>
         </div>
-        <button className="md:hidden text-2xl text-white">☰</button>
+        <a href="#contact" className="px-6 py-2.5 bg-black text-white text-sm font-bold rounded-full hover:scale-105 transition-transform shadow-lg">
+          Let's Talk ↗
+        </a>
       </div>
     </nav>
   );
