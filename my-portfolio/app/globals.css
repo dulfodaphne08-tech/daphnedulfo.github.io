@@ -2,12 +2,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f4f5;
-  --foreground: #111111;
-  --muted: #71717a;
+  --background: #e5e5e5; /* Slightly darker grey to match Dribbble */
+  --foreground: #000000;
+  --muted: #555555;
   --accent: #FF3366;
-  --card: #ffffff;
-  --border: #e4e4e7;
 }
 
 body {
@@ -41,56 +39,12 @@ a, button { cursor: none; }
 
 ::-webkit-scrollbar { display: none; }
 
-/* Text Outline - Truly Transparent */
-.text-outline {
-  color: transparent !important;
-  -webkit-text-stroke: 2px #111111;
-  background-color: transparent !important;
-  z-index: 0;
-}
-
-/* Ferris Wheel - Upside Down (Inverted) */
-.carousel-container {
-  perspective: 1000px;
-  width: 100%;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.carousel-wheel {
-  position: relative;
-  width: 320px;
-  height: 420px;
-  transform-style: preserve-3d;
-  /* Added rotateX(180deg) to flip it upside down */
-  animation: rotateWheel 24s linear infinite;
-  transform: rotateX(15deg); 
-}
-
-.carousel-wheel:hover {
-  animation-play-state: paused;
-}
-
-.carousel-item {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  background: var(--card);
-}
-
+/* Ferris Wheel */
+.carousel-container { perspective: 1000px; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.carousel-wheel { position: relative; width: 320px; height: 420px; transform-style: preserve-3d; animation: rotateWheel 24s linear infinite; transform: rotateX(15deg); }
+.carousel-wheel:hover { animation-play-state: paused; }
+.carousel-item { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 1rem; overflow: hidden; border: 1px solid #ccc; box-shadow: 0 20px 40px rgba(0,0,0,0.1); background: #fff; }
 .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(380px); }
 .carousel-item:nth-child(2) { transform: rotateY(120deg) translateZ(380px); }
 .carousel-item:nth-child(3) { transform: rotateY(240deg) translateZ(380px); }
-
-@keyframes rotateWheel {
-  0% { transform: rotateX(15deg) rotateY(0deg); }
-  100% { transform: rotateX(15deg) rotateY(360deg); }
-}
+@keyframes rotateWheel { 0% { transform: rotateX(15deg) rotateY(0deg); } 100% { transform: rotateX(15deg) rotateY(360deg); } }
