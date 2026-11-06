@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "my-portfolio/**"
-      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:

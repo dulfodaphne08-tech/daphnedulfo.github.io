@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, MouseEvent } from "react";
 
 export default function Hero() {
   const [loading, setLoading] = useState(true);
+  const pictureSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/picture.png`;
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -106,14 +107,14 @@ export default function Hero() {
             className="w-full max-w-[1000px] h-[600px] md:h-[100vh] relative cursor-none flex items-end justify-center"
           >
             <img 
-              src="/picture.png" 
+              src={pictureSrc}
               alt="Daphne" 
               className="w-full h-full object-contain object-bottom grayscale drop-shadow-2xl scale-110 md:scale-125 origin-bottom" 
             />
             <motion.div 
               className="absolute inset-0 w-full h-full z-10 pointer-events-none scale-110 md:scale-125 origin-bottom" 
               style={{ 
-                backgroundImage: "url('/picture.png')", 
+                backgroundImage: `url('${pictureSrc}')`,
                 backgroundSize: "contain", 
                 backgroundPosition: "bottom center", 
                 backgroundRepeat: "no-repeat", 
