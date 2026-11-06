@@ -15,23 +15,21 @@ export default function Workflow() {
     <section className="py-32 px-6 bg-white border-y border-gray-200">
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Header */}
         <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-black tracking-tighter mb-4"
+            className="text-5xl md:text-7xl mb-6 text-black"
           >
             How I Approach a Project
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-gray-500 font-medium text-lg max-w-2xl mx-auto"
+            className="text-gray-500 font-medium text-xl text-center"
           >
             My step-by-step development process from initial idea to final deployment.
           </motion.p>
         </div>
 
-        {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <motion.div 
@@ -40,16 +38,15 @@ export default function Workflow() {
               whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-[#f4f4f5] p-10 rounded-[2rem] border border-gray-200 relative overflow-hidden group hover:bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              className="bg-[#f4f4f5] p-8 md:p-10 rounded-[2rem] border border-gray-200 relative overflow-hidden group hover:bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Giant Background Number */}
-              <span className="text-8xl font-black text-black/5 absolute -top-4 -right-2 group-hover:text-[#FF3366]/10 transition-colors duration-500 pointer-events-none">
+              {/* Giant Number - Tucked away in the corner */}
+              <span className="text-[120px] font-black text-black/[0.04] absolute -top-4 -right-4 group-hover:text-[#FF3366]/[0.05] transition-colors duration-500 pointer-events-none leading-none select-none">
                 {step.num}
               </span>
               
-              {/* Content */}
               <div className="relative z-10">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center text-[#FF3366] font-black mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-[#FF3366] font-black mb-6 group-hover:scale-110 transition-transform">
                   {step.num}
                 </div>
                 <h3 className="text-2xl font-black mb-3 text-black group-hover:text-[#FF3366] transition-colors">

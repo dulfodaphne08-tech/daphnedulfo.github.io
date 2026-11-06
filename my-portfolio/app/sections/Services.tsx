@@ -13,18 +13,20 @@ export default function Services() {
     <section className="py-32 px-6 bg-white border-y border-gray-200">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tight text-black">What I Work With</h2>
-          <p className="text-gray-500 font-medium text-lg">The tools and technologies I use to bring ideas to life.</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tighter text-black">What I Work With</h2>
+          <p className="text-gray-500 font-medium text-lg max-w-2xl mx-auto text-center">
+            The tools and technologies I use to bring ideas to life.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => (
             <motion.div 
               key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}
-              className="p-8 bg-[#f4f4f5] border border-gray-200 rounded-[2rem] hover:border-[#FF3366] hover:shadow-xl transition-all group"
+              className="p-8 bg-[#f4f4f5] border border-gray-200 rounded-[2rem] hover:border-[#FF3366] hover:shadow-2xl transition-all duration-300 group"
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-transform origin-left">{s.icon}</div>
-              <h3 className="text-xl font-black mb-3 text-black">{s.title}</h3>
-              <p className="text-gray-600 font-medium text-sm leading-relaxed">{s.desc}</p>
+              <div className="text-5xl mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-transform origin-left">{s.icon}</div>
+              <h3 className="text-xl font-black mb-4 text-black">{s.title}</h3>
+              <p className="text-gray-600 font-medium text-sm">{s.desc}</p>
             </motion.div>
           ))}
         </div>

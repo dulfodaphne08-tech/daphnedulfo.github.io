@@ -8,21 +8,21 @@ export default function About() {
     <section id="about" className="py-32 px-6 relative bg-[#f4f4f5]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-black leading-[1.1]">A little<br/>about me.</h2>
-          <p className="text-xl text-gray-600 leading-relaxed mb-6 font-medium">
+          <h2 className="text-5xl md:text-7xl font-extrabold mb-8 text-black leading-[1.1] tracking-tighter">A little<br/>about me.</h2>
+          <p className="text-xl text-gray-600 font-medium mb-6">
             I am Daphne Dulfo, a third-year Bachelor of Science in Information Technology student at Eastern Samar State University.
           </p>
-          <p className="text-lg text-gray-600 leading-relaxed mb-6">
+          <p className="text-lg text-gray-600 mb-6 font-medium">
             My interest in technology has grown through hands-on academic projects, where I have learned how to design websites, develop systems, work with databases, and collaborate with a team.
           </p>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-600 font-medium">
             I am currently building my knowledge in web development and database technologies while exploring different development tools and approaches to problem-solving. I may still be growing as a developer, but I enjoy learning through real projects, challenges, and experimentation.
           </p>
         </motion.div>
         
         <motion.div 
           initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="bg-white p-10 md:p-14 rounded-[2rem] border border-gray-200 shadow-2xl"
+          className="bg-white p-10 md:p-14 rounded-[2.5rem] border border-gray-200 shadow-2xl flex flex-col justify-center"
         >
           <h3 className="text-sm font-black tracking-widest text-[#FF3366] uppercase mb-10 flex items-center gap-2">
             <span>✨</span> What I Can Bring
