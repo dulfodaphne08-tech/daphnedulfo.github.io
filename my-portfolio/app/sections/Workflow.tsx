@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { num: "01", title: "Understand", desc: "Understand the requirements and identify the problem." },
+  { num: "01", title: "Understand", desc: "Understand the requirements and identify the core problem." },
   { num: "02", title: "Plan", desc: "Think about the pages, features, data, and overall structure." },
   { num: "03", title: "Build", desc: "Develop the interface and system functionality." },
   { num: "04", title: "Test", desc: "Check features, identify errors, and fix problems." },
@@ -14,10 +14,25 @@ export default function Workflow() {
   return (
     <section className="py-32 px-6 bg-white border-y border-gray-200">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter">How I Approach a Project</h2>
+        
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black text-black tracking-tighter mb-4"
+          >
+            How I Approach a Project
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+            className="text-gray-500 font-medium text-lg max-w-2xl mx-auto"
+          >
+            My step-by-step development process from initial idea to final deployment.
+          </motion.p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <motion.div 
               key={i} 
@@ -25,14 +40,29 @@ export default function Workflow() {
               whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-[#f4f4f5] p-8 rounded-3xl border border-gray-200 relative overflow-hidden group hover:bg-white hover:shadow-xl transition-all"
+              className="bg-[#f4f4f5] p-10 rounded-[2rem] border border-gray-200 relative overflow-hidden group hover:bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
             >
-              <span className="text-6xl font-black text-black/5 absolute top-4 right-4 group-hover:text-[#FF3366]/10 transition-colors">{step.num}</span>
-              <h3 className="text-2xl font-black mb-3 text-black relative z-10">{step.title}</h3>
-              <p className="text-gray-600 font-medium leading-relaxed relative z-10">{step.desc}</p>
+              {/* Giant Background Number */}
+              <span className="text-8xl font-black text-black/5 absolute -top-4 -right-2 group-hover:text-[#FF3366]/10 transition-colors duration-500 pointer-events-none">
+                {step.num}
+              </span>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center text-[#FF3366] font-black mb-6 group-hover:scale-110 transition-transform">
+                  {step.num}
+                </div>
+                <h3 className="text-2xl font-black mb-3 text-black group-hover:text-[#FF3366] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

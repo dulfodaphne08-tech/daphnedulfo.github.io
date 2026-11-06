@@ -4,7 +4,6 @@ import About from './sections/About'
 import Services from './sections/Services'
 import Education from './sections/Education'
 import Achievements from './sections/Achievements'
-import Journey from './sections/Journey'
 import FeaturedWork from './sections/FeaturedWork'
 import Workflow from './sections/Workflow'
 import Skills from './sections/Skills'
@@ -20,7 +19,6 @@ export default function Home() {
       <Services />
       <Education />
       <Achievements />
-      <Journey />
       <FeaturedWork />
       <Workflow />
       <Skills />
